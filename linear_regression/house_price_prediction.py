@@ -23,10 +23,10 @@ def plot_data(x, y):
 
 def normalize(data):
 	for i in range(0,data.shape[1]-1):
-		data[:,i] = ((data[:,i] - np.mean(data[:,i]))/np.std(data[:, i]))
 		mu.append(np.mean(data[:,i]))
 		std.append(np.std(data[:, i]))
-
+		data[:,i] = ((data[:,i] - np.mean(data[:,i]))/np.std(data[:, i]))
+		
 
 def h(x,theta):
 	return np.matmul(x, theta)
@@ -55,7 +55,6 @@ def plot_cost(J_all, num_epochs):
 def test(theta, x):
 	x[0] = (x[0] - mu[0])/std[0]
 	x[1] = (x[1] - mu[1])/std[1]
-
 	y = theta[0] + theta[1]*x[0] + theta[2]*x[1]
 	print("Price of house: ", y)
 
@@ -82,6 +81,6 @@ jplot = np.array(jplot)
 n_epochs = np.array(n_epochs)
 plot_cost(jplot, n_epochs)
 
-test(theta, [1600, 2])
+test(theta, [1600, 3])
 
 
